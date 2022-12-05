@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from monsterdatabase import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("login", views.login_api),
+    path("register", views.register_api),
+    path("monsters", views.monster_list),
+    path("monsters/<int:id>", views.monster_indiv),
+    path("user", views.get_user),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
